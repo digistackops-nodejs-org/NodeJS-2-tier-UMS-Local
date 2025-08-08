@@ -1,70 +1,90 @@
-## demo app - developing with Docker
+# Install Mongo DB
+## Launch EC2 "t2.micro" Instance and In Sg, Open port "27017" for MongoDB & "3000" for Node.js Application server
+### Create mondDB repo in YUM repository
+```
+sudo vim /etc/yum.repos.d/mongodb-org-8.0.repo
+```
+### Add MongoDB repo Details 
+```
+[mongodb-org-8.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2023/mongodb-org/8.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://pgp.mongodb.com/server-8.0.asc
+```
+### Install mongoDB
+```
+sudo yum update -y
+sudo yum install -y mongodb-org
+```
+### Start mongoDB
+```
+sudo systemctl daemon-reload
+sudo systemctl enable mongod
+sudo systemctl start mongod
+sudo systemctl status mongod
+```
+### Login to your mongoDB
+```
+mongosh
+```
+### Allow Remote Access
+```
+sudo vim /etc/mongod.conf
+```
+Replace 0.0.0.0 in bindIp
+```
+# network interfaces 
+    net:   
+       port: 27017   
+       bindIp: 0.0.0.0 # to bind to all interfaces
+```
+#### Restart mongoDB
+```
+sudo systemctl restart mongod
+```
 
-This demo app shows a simple user profile app set up using 
-- index.html with pure js and css styles
-- nodejs backend with express module
-- mongodb for data storage
+## Use mongo-compass in your Local Machine and try to access your MongoDB
+```
+mongodb://<your-AWS-Public-IP>:27017
+```
 
-All components are docker-based
-
-### With Docker
-
-#### To start the application
-
-Step 1: Create docker network
-
-    docker network create mongo-network 
-
-Step 2: start mongodb 
-
-    docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password --name mongodb --net mongo-network mongo    
-
-Step 3: start mongo-express
-    
-    docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password --net mongo-network --name mongo-express -e ME_CONFIG_MONGODB_SERVER=mongodb mongo-express   
-
-_NOTE: creating docker-network in optional. You can start both containers in a default network. In this case, just emit `--net` flag in `docker run` command_
-
-Step 4: open mongo-express from browser
-
-    http://localhost:8081
-
-Step 5: create `user-account` _db_ and `users` _collection_ in mongo-express
-
-Step 6: Start your nodejs application locally - go to `app` directory of project 
-
-    npm install 
-    node server.js
-    
-Step 7: Access you nodejs application UI from browser
-
-    http://localhost:3000
-
-### With Docker Compose
-
-#### To start the application
-
-Step 1: start mongodb and mongo-express
-
-    docker-compose -f docker-compose.yaml up
-    
-_You can access the mongo-express under localhost:8080 from your browser_
-    
-Step 2: in mongo-express UI - create a new database "my-db"
-
-Step 3: in mongo-express UI - create a new collection "users" in the database "my-db"       
-    
-Step 4: start node server 
-
-    npm install
-    node server.js
-    
-Step 5: access the nodejs application from browser 
-
-    http://localhost:3000
-
-#### To build a docker image from the application
-
-    docker build -t my-app:1.0 .       
-    
-The dot "." at the end of the command denotes location of the Dockerfile.
+# Setup Application Server
+## Install Node
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install 16
+```
+### Check Node Version
+```
+node -v
+npm -v
+```
+## Install Git
+```
+sudo yum install git -y
+```
+### To start this application first you can get the code using below url
+#### Clone the Repo
+```
+git clone https://github.com/techizone-Small-Project-org/Nodejs-Static-Project.git
+```
+#### Switch to Local-setup Branch
+```
+cd Nodejs-Static-Project
+git checkout Local-setup
+```
+#### Download the Dependencies
+```
+npm install
+```
+#### Start the Application
+```
+node app.js
+```
+#### Access Your Application in Browser
+```
+http://<Your-AWS-Public-IP>:9990/sapsecops
+```
