@@ -102,6 +102,13 @@ cd NodeJS-2-tier-UMS-App
 ```
 sudo git checkout 01-Local-setup-Dev
 ```
+#### Edit "server.js" and Mention your DB Details
+
+```
+// use when starting application locally
+let mongoUrlLocal = "mongodb://appuser:pa55Word@<DB-PriVATE-ip>:27017";
+```
+
 #### Download the Dependencies
 ```
 npm install
