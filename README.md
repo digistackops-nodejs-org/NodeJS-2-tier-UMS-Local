@@ -50,6 +50,8 @@ sudo systemctl restart mongod
 mongodb://<your-AWS-Public-IP>:27017
 ```
 
+## Using Mongo-Compose create DB "user-account" and Collection "users"
+
 # Setup Application Server
 ## Install Node
 ```
