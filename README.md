@@ -72,11 +72,11 @@ sudo yum install git -y
 #### Clone the Repo
 ```
 sudo git clone https://github.com/techizone-Small-Project-org/NodeJS-2-tier-UMS-App.git
+cd NodeJS-2-tier-UMS-App
 ```
 #### Switch to Local-setup Branch
 ```
-cd NodeJS-2-tier-UMS-App
-git checkout 01-Local-setup-Dev
+sudo git checkout 01-Local-setup-Dev
 ```
 #### Download the Dependencies
 ```
@@ -84,7 +84,7 @@ npm install
 ```
 #### Start the Application
 ```
-node app.js
+node server.js
 ```
 #### Access Your Application in Browser
 ```
