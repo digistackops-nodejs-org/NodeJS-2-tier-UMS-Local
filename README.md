@@ -77,7 +77,48 @@ db.createUser({
 ```
 
 # Setup Application Server
+
+## Note ==> HERE in our PROD Branch Code we alredy Edit these Code in "server.js", so no need to Change any thing HERE
+
+### Good-To-Know
+```
+As of Now We Hardcode the DB Credentials in "server.js"
+
+In "server.js" we mention our DB credentials Manually and push it to GIT. 
+We have 2 problems HERE
+1. These code is not eligibile for CICD, we manually enter the Credentials
+2. It expose our Credentials to everyone
+
+Which is Not recommended in PROD as well
+
+So we need to Pass our DB Credentials as Environment Variables
+For that we need to Change our Code 
+
+Open your "server.js" Edit MongoDB configuration
+
+You see like these
+
+----
+// use when starting application locally
+let mongoUrlLocal = "mongodb://appuser:pa55Word@<Private-IP>:27017";
+---
+
+
+So we need to Edit these code as per Environment Variables
+
+----
+require('dotenv').config();
+
+let mongoUrlLocal = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASS}` +
+                    `@${process.env.MONGO_HOST}:27017`;
+
+let databaseName = process.env.MONGO_DB;
+----
+```
+
 ## Launch EC2 "t2.micro" Instance and In Sg, Open port "3000" for Node.js Application server
+
+
 ### Install Node
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
@@ -103,11 +144,14 @@ cd NodeJS-2-tier-UMS-App
 ```
 sudo git checkout 01-Local-setup-Dev
 ```
-#### Edit "server.js" and Mention your DB Details
+
+### Pass our DB Credentials as Environment Variables 
 
 ```
-// use when starting application locally
-let mongoUrlLocal = "mongodb://appuser:pa55Word@<DB-PriVATE-ip>:27017";
+export MONGO_USER=appuser
+export MONGO_PASS=pa55Word
+export MONGO_HOST=AWS-DB-Private-IP
+export MONGO_DB=user-account
 ```
 
 #### Download the Dependencies
