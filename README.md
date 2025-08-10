@@ -71,12 +71,12 @@ sudo yum install git -y
 ### To start this application first you can get the code using below url
 #### Clone the Repo
 ```
-git clone https://github.com/techizone-Small-Project-org/Nodejs-Static-Project.git
+sudo git clone https://github.com/techizone-Small-Project-org/NodeJS-2-tier-UMS-App.git
 ```
 #### Switch to Local-setup Branch
 ```
-cd Nodejs-Static-Project
-git checkout Local-setup
+cd NodeJS-2-tier-UMS-App
+git checkout 01-Local-setup-Dev
 ```
 #### Download the Dependencies
 ```
