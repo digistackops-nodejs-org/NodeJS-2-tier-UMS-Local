@@ -21,7 +21,8 @@ app.get('/profile-picture', function (req, res) {
 });
 
 // use when starting application locally
-let mongoUrlLocal = "mongodb://appuser:pa55Word@<AWS-DB-Private-IP>:27017";
+let mongoUrlLocal = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASS}` +
+                    `@${process.env.MONGO_HOST}:27017`;
 
 // use when starting application as docker container
 let mongoUrlDocker = "mongodb://admin:password@mongodb";
@@ -30,7 +31,7 @@ let mongoUrlDocker = "mongodb://admin:password@mongodb";
 let mongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
 // "user-account" in demo with docker. "my-db" in demo with docker-compose
-let databaseName = "user-account";
+let databaseName = process.env.MONGO_DB;
 
 app.post('/update-profile', function (req, res) {
   let userObj = req.body;
