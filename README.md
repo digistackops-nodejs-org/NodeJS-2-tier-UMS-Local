@@ -1,5 +1,5 @@
 # Install Mongo DB
-## Launch EC2 "t2.micro" Instance and In Sg, Open port "27017" for MongoDB & "3000" for Node.js Application server
+## Launch EC2 "t2.micro" Instance and In Sg, Open port "27017" for MongoDB
 ### Create mondDB repo in YUM repository
 ```
 sudo vim /etc/yum.repos.d/mongodb-org-8.0.repo
@@ -77,6 +77,7 @@ db.createUser({
 ```
 
 # Setup Application Server
+## Launch EC2 "t2.micro" Instance and In Sg, Open port "3000" for Node.js Application server
 ### Install Node
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
