@@ -142,7 +142,7 @@ cd NodeJS-2-tier-UMS-App
 ```
 ##### Switch to Local-setup Branch
 ```
-sudo git checkout 01-Local-setup-Dev
+sudo git checkout 02-Local-setup-Prod
 ```
 
 ### Pass our DB Credentials as Environment Variables 
