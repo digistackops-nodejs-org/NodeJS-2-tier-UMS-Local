@@ -25,10 +25,35 @@ sudo systemctl enable mongod
 sudo systemctl start mongod
 sudo systemctl status mongod
 ```
-### Login to your mongoDB
+## Setup MongoDB
+## Use mongo-compass in your Local Machine and try to access your MongoDB
+```
+mongodb://<your-AWS-Public-IP>:27017
+```
+
+
+### Login to your mongoDB and Create application user
 ```
 mongosh
 ```
+### switch to admin user
+
+```
+use admin
+```
+
+### Create Application User
+
+```
+db.createUser({
+  user: "appuser",
+  pwd: "pa55Word",
+  roles: [
+    { role: "readWrite", db: "user-account" }
+  ]
+});
+```
+
 ### Allow Remote Access
 ```
 sudo vim /etc/mongod.conf
@@ -45,10 +70,7 @@ Replace 0.0.0.0 in bindIp
 sudo systemctl restart mongod
 ```
 
-## Use mongo-compass in your Local Machine and try to access your MongoDB
-```
-mongodb://<your-AWS-Public-IP>:27017
-```
+
 
 ## Using Mongo-Compose create DB "user-account" and Collection "users"
 
