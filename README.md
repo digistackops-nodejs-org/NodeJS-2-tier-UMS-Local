@@ -106,6 +106,12 @@ sudo git checkout 01-Local-setup-Dev
 ```
 npm install
 ```
+##### if you get Permission Issue then 
+
+```
+sudo chown -R ec2-user:ec2-user /home/ec2-user/NodeJS-2-tier-UMS-App
+```
+
 #### Start the Application
 ```
 node server.js
