@@ -172,3 +172,10 @@ node server.js
 ```
 http://<Your-AWS-Public-IP>:3000
 ```
+
+<img width="455" height="579" alt="image" src="https://github.com/user-attachments/assets/7b0356a7-652a-4d19-a3bf-e8aac40329d7" />
+
+#### Check Data in DB
+Login to mongo-compass check user-account DB and user collection
+
+<img width="966" height="167" alt="image" src="https://github.com/user-attachments/assets/8eb0ce55-8487-4a48-a7c2-d031acf5d192" />
