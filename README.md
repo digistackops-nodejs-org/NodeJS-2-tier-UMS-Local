@@ -64,6 +64,12 @@ mongosh
 use admin
 ```
 
+Switch to employeedb 
+
+```
+use user-account
+```
+
 ### Create Application User
 
 ```
