@@ -146,8 +146,8 @@ sudo yum install git -y
 #### To start this application first you can get the code using below url
 ##### Clone the Repo
 ```
-sudo git clone https://github.com/techizone-Small-Project-org/NodeJS-2-tier-UMS-App.git
-cd NodeJS-2-tier-UMS-App
+sudo git clone https://github.com/digistackops-nodejs-org/NodeJS-2-tier-UMS-Local.git
+cd NodeJS-2-tier-UMS-Local
 ```
 ##### Switch to Local-setup Branch
 ```
@@ -162,15 +162,14 @@ export MONGO_PASS=pa55Word
 export MONGO_HOST=AWS-DB-Private-IP
 export MONGO_DB=user-account
 ```
-
-#### Download the Dependencies
-```
-npm install
-```
 ##### if you get Permission Issue then 
 
 ```
-sudo chown -R ec2-user:ec2-user /home/ec2-user/NodeJS-2-tier-UMS-App
+sudo chown -R ec2-user:ec2-user /home/ec2-user/NodeJS-2-tier-UMS-Local
+```
+#### Download the Dependencies
+```
+npm install
 ```
 
 #### Start the Application
