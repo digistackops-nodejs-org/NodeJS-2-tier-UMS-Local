@@ -96,8 +96,8 @@ sudo yum install git -y
 #### To start this application first you can get the code using below url
 ##### Clone the Repo
 ```
-sudo git clone https://github.com/techizone-Small-Project-org/NodeJS-2-tier-UMS-App.git
-cd NodeJS-2-tier-UMS-App
+sudo git clone https://github.com/digistackops-nodejs-org/NodeJS-2-tier-UMS-Local.git
+cd NodeJS-2-tier-UMS-Local
 ```
 ##### Switch to Local-setup Branch
 ```
@@ -110,16 +110,15 @@ sudo git checkout 01-Local-setup-Dev
 let mongoUrlLocal = "mongodb://appuser:pa55Word@<DB-PriVATE-ip>:27017";
 ```
 
+##### if you get Permission Issue then 
+
+```
+sudo chown -R ec2-user:ec2-user /home/ec2-user/NodeJS-2-tier-UMS-Local
+```
 #### Download the Dependencies
 ```
 npm install
 ```
-##### if you get Permission Issue then 
-
-```
-sudo chown -R ec2-user:ec2-user /home/ec2-user/NodeJS-2-tier-UMS-App
-```
-
 #### Start the Application
 ```
 node server.js
@@ -128,3 +127,7 @@ node server.js
 ```
 http://<Your-AWS-Public-IP>:3000
 ```
+<img width="554" height="611" alt="image" src="https://github.com/user-attachments/assets/018abf31-d5e8-4623-8cfd-6bd1862df392" />
+<img width="470" height="133" alt="image" src="https://github.com/user-attachments/assets/0a14aeab-9043-4ec7-bd64-f4040c5887df" />
+
+
