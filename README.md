@@ -42,50 +42,39 @@ Replace 0.0.0.0 in bindIp
 ```
 sudo systemctl restart mongod
 ```
-### Use mongo-compass in your Local Machine and try to access your MongoDB
-```
-mongodb://<your-AWS-Public-IP>:27017
-```
-### Using Mongo-Compose create DB "user-account" and Collection "users"
-
-<img width="1103" height="528" alt="image" src="https://github.com/user-attachments/assets/4ad6e0a7-bd5d-4bf3-9068-69eb63e18bd4" />
-<img width="577" height="432" alt="image" src="https://github.com/user-attachments/assets/bc64c51c-765d-42d0-afef-a9fe788faa01" />
-<img width="1383" height="382" alt="image" src="https://github.com/user-attachments/assets/9ca73003-bb27-4d0c-a9d5-ec1154b70608" />
 
 
-
-### Login to your mongoDB and Create application user
-```
-mongosh
-```
-### switch to admin user
-
-```
-use admin
-```
-
-Switch to employeedb 
-
-```
-use user-account
-```
-
-### Create Application User
-
-```
-db.createUser({
-  user: "appuser",
-  pwd: "pa55Word",
-  roles: [
-    { role: "readWrite", db: "user-account" }
-  ]
-});
-```
 
 # Setup Application Server
+## Launch EC2 "t2.micro" Instance and In Sg, Open port "3000" for Nodejs Application server
 
+## Setup your Application Database by executing "initdb.js" script from Application-server
+
+Step:1 ==> install "mongo-Client" for communicate with Mongo Database
+
+```
+sudo vim /etc/yum.repos.d/mongodb-org-8.0.repo
+```
+```
+[mongodb-org-8.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2023/mongodb-org/8.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://pgp.mongodb.com/server-8.0.asc
+```
+To install "Mongo-Shell" to communicate with Mongo database
+```
+sudo yum update -y
+sudo yum install -y mongodb-mongosh
+```
+Step:2 ==> Execute your "init.sql" script for your Application DB setup
+
+```
+cd backend
+mongosh "mongodb://<DB-Private-IP>:27017/admin" < init.js
+``` 
 ## Note ==> HERE in our PROD Branch Code we alredy Edit these Code in "server.js", so no need to Change any thing HERE
-
 ### Good-To-Know
 ```
 As of Now We Hardcode the DB Credentials in "server.js"
