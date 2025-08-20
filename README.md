@@ -71,7 +71,6 @@ sudo yum install -y mongodb-mongosh
 Step:2 ==> Execute your "init.sql" script for your Application DB setup
 
 ```
-cd backend
 mongosh "mongodb://<DB-Private-IP>:27017/admin" < init.js
 ``` 
 ## Note ==> HERE in our PROD Branch Code we alredy Edit these Code in "server.js", so no need to Change any thing HERE
