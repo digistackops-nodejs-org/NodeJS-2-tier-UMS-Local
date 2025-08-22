@@ -1,4 +1,4 @@
-use user-account;
+use admin;
 
 db.createUser({
   user: "appuser",
@@ -7,5 +7,6 @@ db.createUser({
     { role: "readWrite", db: "user-account" }
   ]
 });
+use user-account;
 
 db.createCollection("users")
